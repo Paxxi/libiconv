@@ -191,7 +191,6 @@ autom4te.cache/
 /config.h
 /stamp-h1
 /lib/stamp-h2
-/include/iconv.h
 /include/iconv.h.inst
 # Erased by libcharset/Makefile.
 /libcharset/config.status
