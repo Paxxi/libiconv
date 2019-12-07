@@ -17,8 +17,6 @@
 
 /* Written by Bruno Haible <bruno@clisp.org>.  */
 
-#include <config.h>
-
 /* Specification.  */
 #include "localcharset.h"
 
@@ -775,7 +773,7 @@ locale_charset (void)
 
   pdot = strrchr (current_locale, '.');
   if (pdot && 2 + strlen (pdot + 1) + 1 <= sizeof (buf))
-    sprintf (buf, "CP%s", pdot + 1);
+    snprintf (buf, 13, "CP%s", pdot + 1);
   else
     {
       /* The Windows API has a function returning the locale's codepage as a
@@ -785,7 +783,7 @@ locale_charset (void)
         GetConsoleOutputCP() encoding if it is using a TrueType font.
         But in GUI programs and for output sent to files and pipes, GetACP()
         encoding is the best bet.  */
-      sprintf (buf, "CP%u", GetACP ());
+      snprintf (buf, 13, "CP%u", GetACP ());
     }
   codeset = buf;
 

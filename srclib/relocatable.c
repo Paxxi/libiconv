@@ -1,19 +1,19 @@
 /* Provide relocatable packages.
-   Copyright (C) 2003-2006, 2008-2018 Free Software Foundation, Inc.
+   Copyright (C) 2003-2006, 2008-2019 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2003.
 
-   This program is free software; you can redistribute it and/or modify it
-   under the terms of the GNU Library General Public License as published
-   by the Free Software Foundation; either version 2, or (at your option)
-   any later version.
+   This program is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 3 of the License, or
+   (at your option) any later version.
 
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Library General Public License for more details.
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
 
-   You should have received a copy of the GNU Library General Public License
-   along with this program; if not, see <https://www.gnu.org/licenses/>.  */
+   You should have received a copy of the GNU General Public License
+   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
 
 
 /* Tell glibc's <stdio.h> to provide a prototype for getline().
@@ -24,6 +24,7 @@
 #endif
 
 #define _GL_USE_STDLIB_ALLOC 1
+#include <config.h>
 
 /* Specification.  */
 #include "relocatable.h"
@@ -267,7 +268,7 @@ compute_curr_prefix (const char *orig_installprefix,
           }
         if (!same)
           break;
-        /* The last pathname component was the same.  opi and cpi now point
+        /* The last pathname component was the same.  rpi and cpi now point
            to the slash before it.  */
         rp = rpi;
         cp = cpi;
@@ -281,23 +282,23 @@ compute_curr_prefix (const char *orig_installprefix,
       }
 
     {
-      size_t curr_prefix_len = cp - curr_installdir;
-      char *curr_prefix;
+      size_t computed_curr_prefix_len = cp - curr_installdir;
+      char *computed_curr_prefix;
 
-      curr_prefix = (char *) xmalloc (curr_prefix_len + 1);
+      computed_curr_prefix = (char *) xmalloc (computed_curr_prefix_len + 1);
 #ifdef NO_XMALLOC
-      if (curr_prefix == NULL)
+      if (computed_curr_prefix == NULL)
         {
           free (curr_installdir);
           return NULL;
         }
 #endif
-      memcpy (curr_prefix, curr_installdir, curr_prefix_len);
-      curr_prefix[curr_prefix_len] = '\0';
+      memcpy (computed_curr_prefix, curr_installdir, computed_curr_prefix_len);
+      computed_curr_prefix[computed_curr_prefix_len] = '\0';
 
       free (curr_installdir);
 
-      return curr_prefix;
+      return computed_curr_prefix;
     }
   }
 }

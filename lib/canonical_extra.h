@@ -1,0 +1,7 @@
+  offsetof(struct stringpool2_t, stringpool_extra_0),
+  offsetof(struct stringpool2_t, stringpool_extra_2),
+  offsetof(struct stringpool2_t, stringpool_extra_4),
+  offsetof(struct stringpool2_t, stringpool_extra_6),
+  offsetof(struct stringpool2_t, stringpool_extra_7),
+  offsetof(struct stringpool2_t, stringpool_extra_9),
+  offsetof(struct stringpool2_t, stringpool_extra_11),
